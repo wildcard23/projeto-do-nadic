@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}
+
+{% block title %}Produtos | Catálogo{% endblock %}
+
+{% block content %}
+  <h1>Produtos</h1>
+  {% if produtos %}
+    <ul>
+      {% for produto in produtos %}
+        <li>
+          <a href="{% url 'detalhe_produto' produto.id %}">{{ produto.nome }}</a>
+          - R$ {{ produto.preco|floatformat:2 }}
+          ({{ produto.categoria.nome }})
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Nenhum produto cadastrado.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "core/base.html" %}
+
+{% block title %}Novo produto | Catálogo{% endblock %}
+
+{% block content %}
+  <h1>Novo produto</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+  </form>
+  <p>Não encontrou o material? <a href="{% url 'categorias' %}">Gerencie as categorias</a>.</p>
+{% endblock %}

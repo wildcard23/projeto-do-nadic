@@ -1,0 +1,10 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ produto.nome }} | Catálogo{% endblock %}
+
+{% block content %}
+  <h1>{{ produto.nome }}</h1>
+  <p>Categoria: {{ produto.categoria.nome }}</p>
+  <p>Preço: R$ {{ produto.preco|floatformat:2 }}</p>
+  <a href="{% url 'lista_produtos' %}">Voltar</a>
+{% endblock %}

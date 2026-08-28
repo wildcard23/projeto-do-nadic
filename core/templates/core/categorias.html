@@ -1,0 +1,22 @@
+{% extends "core/base.html" %}
+
+{% block title %}Categorias | Catálogo{% endblock %}
+
+{% block content %}
+  <h1>Categorias</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Adicionar categoria</button>
+  </form>
+
+  {% if categorias %}
+    <ul>
+      {% for categoria in categorias %}
+        <li>{{ categoria.nome }} ({{ categoria.produtos.count }} produto{{ categoria.produtos.count|pluralize }})</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Nenhuma categoria cadastrada.</p>
+  {% endif %}
+{% endblock %}
