@@ -1,7 +1,7 @@
 {% extends "core/base.html" %}
 
 {% block title %}{{ produto.nome }} | Catálogo{% endblock %}
-
+ {% csrf_token %}
 {% block content %}
   <h1>{{ produto.nome }}</h1>
   <p>Categoria: {{ produto.categoria.nome }}</p>

@@ -25,7 +25,17 @@ SECRET_KEY = "django-insecure-1_r3^)b^0vp!42e&*-$m0fwohwpr7*9c-ba6%tlwywg$p&ap+u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0"]
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "http://localhost:8001",
+    "https://localhost:8000",
+    "https://localhost:8001",
+    "http://127.0.0.1:8000",
+    "http://127.0.0.1:8001",
+    "https://127.0.0.1:8000",
+    "https://127.0.0.1:8001",
+]
 
 
 # Application definition
@@ -116,13 +126,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [BASE_DIR / "core" / "static"]
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
-MAILERS = {
-    "default": {
-        "BACKEND": "django.core.mail.backends.console.EmailBackend",
-    },
-}
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

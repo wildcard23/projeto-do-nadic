@@ -1,7 +1,7 @@
 {% extends "core/base.html" %}
 
 {% block title %}Novo produto | Catálogo{% endblock %}
-
+ {% csrf_token %}
 {% block content %}
   <h1>Novo produto</h1>
   <form method="post">
