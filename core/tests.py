@@ -48,6 +48,13 @@ class CatalogoTests(TestCase):
 	def test_formulario_de_categorias_tem_protecao_csrf(self):
 		response = self.client.get("/categorias/")
 
-		self.assertContains(response, 'name="csrfmiddlewaretoken"')
+		self.assertContains(response, 'name="csrfmiddlewaretoken"', count=1)
+
+	def test_paginas_sem_formulario_nao_renderizam_token_csrf(self):
+		lista = self.client.get("/")
+		detalhe = self.client.get(f"/produto/{self.produto.id}/")
+
+		self.assertNotContains(lista, 'name="csrfmiddlewaretoken"')
+		self.assertNotContains(detalhe, 'name="csrfmiddlewaretoken"')
 
 # Create your tests here.
